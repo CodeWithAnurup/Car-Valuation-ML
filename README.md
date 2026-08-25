@@ -160,19 +160,18 @@ This repository has been upgraded from a Jupyter Notebook experiment into a **pr
 ### Deployment & DevOps
 - **Docker:** Dockerfile and docker-compose.yml for instant local deployment.
 - **CI/CD:** GitHub Actions workflow for automated testing and builds.
-- **Render:** Included ender.yaml for one-click cloud deployment.
+- **Render:** Included ender.yaml for one-click cloud deployment.
 
 ### How to Run Locally (Full-Stack)
 
 1. **Start the Backend API:**
-   `ash
-   ="backend"
-   python -m uvicorn backend.app.main:app --reload
-   ``n
+   ```bash
+   $env:PYTHONPATH="backend"
+   python -m uvicorn backend.app.main:app --port 8001 --reload
+   ```
 2. **Start the Frontend UI:**
-   `ash
+   ```bash
    cd frontend
    npm install
    npm run dev
-   ``n   Open http://localhost:5173 in your browser.
 
