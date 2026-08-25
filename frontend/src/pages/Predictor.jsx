@@ -7,10 +7,11 @@ export default function Predictor() {
     year: 2015,
     km_driven: 50000,
     fuel: 'Petrol',
-    seller_type: 'Individual',
     transmission: 'Manual',
+    seller_type: 'Individual',
     owner: 'First Owner',
-    name: 'Maruti'
+    brand: 'Maruti',
+    name: 'Maruti Swift'
   });
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -64,15 +65,17 @@ export default function Predictor() {
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-slate-400 mb-1">Brand / Name</label>
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
+                <label className="block text-sm font-medium text-slate-400 mb-1">Brand</label>
+                <select
+                  name="brand"
+                  value={formData.brand}
                   onChange={handleChange}
                   className="w-full bg-slate-800 border border-slate-600 rounded-lg px-4 py-2 focus:outline-none focus:border-emerald-500"
-                  placeholder="e.g. Maruti Swift"
-                />
+                >
+                  {getOptions('brand', ['Maruti', 'Hyundai', 'Honda', 'Toyota']).map(opt => (
+                    <option key={opt} value={opt}>{opt}</option>
+                  ))}
+                </select>
               </div>
               
               <div>

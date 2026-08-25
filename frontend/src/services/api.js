@@ -15,6 +15,11 @@ export const api = {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
     });
+    if (!res.ok) {
+      const errorData = await res.json();
+      console.error('API Error:', errorData);
+      throw new Error(errorData.detail || 'Prediction failed');
+    }
     return res.json();
   },
   getModelComparison: async () => {
