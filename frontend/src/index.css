@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #10b981; /* emerald-500 */
+  --color-primary-hover: #059669; /* emerald-600 */
+  --color-dark-bg: #0f172a; /* slate-900 */
+  --color-dark-card: #1e293b; /* slate-800 */
+  --color-dark-border: #334155; /* slate-700 */
+}
+
+body {
+  background-color: var(--color-dark-bg);
+  color: #f8fafc; /* slate-50 */
+}
+
+.glass-panel {
+  background: rgba(30, 41, 59, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}

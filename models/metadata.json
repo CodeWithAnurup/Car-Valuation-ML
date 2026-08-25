@@ -1,0 +1,166 @@
+{
+  "model_name": "xgboost_regressor",
+  "display_name": "XGBoost (Gradient Boosting)",
+  "target_transform": "log1p",
+  "features": [
+    "year",
+    "km_driven",
+    "fuel",
+    "seller_type",
+    "transmission",
+    "owner",
+    "brand"
+  ],
+  "feature_names_api": [
+    "year",
+    "km_driven",
+    "fuel",
+    "seller_type",
+    "transmission",
+    "owner",
+    "brand"
+  ],
+  "total_rows": 3517,
+  "training_rows": 2813,
+  "version": "1.0.0",
+  "training_ranges": {
+    "year": {
+      "min": 1992,
+      "max": 2020
+    },
+    "km_driven": {
+      "min": 101,
+      "max": 220000
+    }
+  },
+  "options": {
+    "fuel": [
+      "CNG",
+      "Diesel",
+      "Electric",
+      "LPG",
+      "Petrol"
+    ],
+    "transmission": [
+      "Automatic",
+      "Manual"
+    ],
+    "seller_type": [
+      "Dealer",
+      "Individual",
+      "Trustmark Dealer"
+    ],
+    "owner": [
+      "First Owner",
+      "Second Owner",
+      "Third Owner",
+      "Fourth & Above Owner",
+      "Test Drive Car"
+    ],
+    "brand": [
+      "Ambassador",
+      "Audi",
+      "BMW",
+      "Chevrolet",
+      "Daewoo",
+      "Datsun",
+      "Fiat",
+      "Force",
+      "Ford",
+      "Honda",
+      "Hyundai",
+      "Isuzu",
+      "Jaguar",
+      "Jeep",
+      "Kia",
+      "Land",
+      "MG",
+      "Mahindra",
+      "Maruti",
+      "Mercedes-Benz",
+      "Mitsubishi",
+      "Nissan",
+      "OpelCorsa",
+      "Renault",
+      "Skoda",
+      "Tata",
+      "Toyota",
+      "Volkswagen",
+      "Volvo"
+    ]
+  },
+  "cv_results": {
+    "Linear Regression": {
+      "mae_mean": 0.3021848943822185,
+      "mae_std": 0.01642653831393149,
+      "rmse_mean": 0.38535532930950434,
+      "rmse_std": 0.02477460031013244,
+      "r2_mean": 0.7600139045796201,
+      "r2_std": 0.034001525855401664
+    },
+    "Random Forest": {
+      "mae_mean": 0.30418944349706833,
+      "mae_std": 0.01649917422801023,
+      "rmse_mean": 0.3979123504208587,
+      "rmse_std": 0.024366119129160896,
+      "r2_mean": 0.7438958162628687,
+      "r2_std": 0.037466678022729745
+    },
+    "XGBoost": {
+      "mae_mean": 0.2996718437167991,
+      "mae_std": 0.016024282463849165,
+      "rmse_mean": 0.3897324784759788,
+      "rmse_std": 0.022968484870697907,
+      "r2_mean": 0.7543078898130536,
+      "r2_std": 0.03669749304441375
+    }
+  },
+  "test_results": {
+    "Linear Regression": {
+      "mae": 0.3056232720160677,
+      "rmse": 0.3853729686513067,
+      "r2": 0.7808701505173095
+    },
+    "Random Forest": {
+      "mae": 0.30854223800685027,
+      "rmse": 0.39248995744186493,
+      "r2": 0.7727017241572192
+    },
+    "XGBoost": {
+      "mae": 0.30522646564452155,
+      "rmse": 0.393170667215621,
+      "r2": 0.7719126169360649
+    }
+  },
+  "selected_model": "XGBoost",
+  "trained_at": "2026-08-26T02:12:46.932344",
+  "data_quality": {
+    "rows": 3517,
+    "columns": 9,
+    "missing_values": 0,
+    "duplicates": 0,
+    "feature_stats": {
+      "selling_price": {
+        "min": 20000.0,
+        "max": 3200000.0,
+        "mean": 452476.58999147,
+        "std": 393750.8090364604,
+        "median": 350000.0
+      },
+      "km_driven": {
+        "min": 1.0,
+        "max": 220000.0,
+        "mean": 66902.72590275803,
+        "std": 40293.81815803132,
+        "median": 60000.0
+      },
+      "year": {
+        "min": 1992,
+        "max": 2020,
+        "mean": 2012.981518339494,
+        "std": 4.244309537549191,
+        "median": 2014.0
+      }
+    }
+  }
+}
