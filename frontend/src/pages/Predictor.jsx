@@ -15,11 +15,11 @@ export default function Predictor() {
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [dataQuality, setDataQuality] = useState(null);
+  const [modelInfo, setModelInfo] = useState(null);
 
   useEffect(() => {
-    api.getDataQuality()
-      .then(setDataQuality)
+    api.getModelInfo()
+      .then(setModelInfo)
       .catch(console.error);
   }, []);
 
@@ -36,7 +36,6 @@ export default function Predictor() {
     setLoading(true);
     setError(null);
     try {
-      // Typically need to match the API expectation. Adjust if needed.
       const res = await api.predict(formData);
       setResult(res);
     } catch (err) {
@@ -46,10 +45,9 @@ export default function Predictor() {
     }
   };
 
-  // Safe extract distinct values from dataQuality features if available, else fallback
   const getOptions = (featureName, fallback) => {
-    if (dataQuality && dataQuality.features && dataQuality.features[featureName] && dataQuality.features[featureName].distinct_values) {
-      return dataQuality.features[featureName].distinct_values;
+    if (modelInfo && modelInfo.options && modelInfo.options[featureName]) {
+      return modelInfo.options[featureName];
     }
     return fallback;
   };
@@ -172,23 +170,23 @@ export default function Predictor() {
             <div className="w-full space-y-4 animate-in fade-in zoom-in duration-300">
               <p className="text-slate-400">Estimated Value</p>
               <h2 className="text-4xl font-bold text-emerald-400">
-                ₹{Number(result.predicted_price || result.predicted_sales || 0).toLocaleString('en-IN', { maximumFractionDigits: 0 })}
+                {result.predicted_price_formatted}
               </h2>
               
-              {result.warnings && result.warnings.length > 0 && (
+              {result.ood_warnings && result.ood_warnings.length > 0 && (
                 <div className="mt-4 p-3 bg-amber-500/10 border border-amber-500/30 rounded-lg text-left">
                   <div className="flex items-center gap-2 text-amber-400 mb-1 font-medium text-sm">
                     <AlertTriangle className="h-4 w-4" />
                     Out of Distribution Warning
                   </div>
                   <ul className="text-xs text-amber-200/80 list-disc list-inside">
-                    {result.warnings.map((w, i) => <li key={i}>{w}</li>)}
+                    {result.ood_warnings.map((w, i) => <li key={i}>{w}</li>)}
                   </ul>
                 </div>
               )}
               
               <div className="text-xs text-slate-500 mt-4 pt-4 border-t border-slate-700">
-                Model version: {result.model_version || 'unknown'}
+                Model version: {result.version || 'unknown'}
               </div>
             </div>
           ) : (

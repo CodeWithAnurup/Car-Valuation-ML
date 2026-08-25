@@ -38,7 +38,7 @@ export default function Dashboard() {
           </div>
           <div>
             <p className="text-sm text-slate-400">Active Model</p>
-            <p className="text-lg font-semibold">{modelInfo?.model || 'Loading...'}</p>
+            <p className="text-lg font-semibold text-white">{modelInfo?.display_name || modelInfo?.model_name || 'Loading...'}</p>
           </div>
         </div>
         
@@ -98,15 +98,15 @@ export default function Dashboard() {
             <div className="space-y-4">
               <div className="flex justify-between border-b border-slate-700 pb-2">
                 <span className="text-slate-400">Algorithm</span>
-                <span className="font-medium">{modelInfo.model}</span>
+                <span className="font-medium">{modelInfo.display_name || modelInfo.model_name}</span>
               </div>
               <div className="flex justify-between border-b border-slate-700 pb-2">
                 <span className="text-slate-400">Version</span>
                 <span className="font-medium">{modelInfo.version}</span>
               </div>
               <div className="flex justify-between border-b border-slate-700 pb-2">
-                <span className="text-slate-400">Degree</span>
-                <span className="font-medium">{modelInfo.degree || 'N/A'}</span>
+                <span className="text-slate-400">Training Samples</span>
+                <span className="font-medium">{modelInfo.training_rows || 'N/A'}</span>
               </div>
               <div>
                 <span className="text-slate-400 block mb-2">Used Features</span>

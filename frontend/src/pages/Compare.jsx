@@ -30,15 +30,29 @@ export default function Compare() {
   const handleCompare = async () => {
     setLoading(true);
     try {
-      // Create scenario payload
-      const payload = { scenarios };
-      const res = await fetch('http://localhost:8000/scenario', {
+      // Create scenario payload - API expects an array directly
+      const payload = scenarios.map(s => ({
+        year: s.year,
+        km_driven: s.km_driven,
+        fuel: s.fuel,
+        transmission: s.transmission,
+        seller_type: s.seller_type,
+        owner: s.owner,
+        brand: s.brand || 'Maruti',
+        name: s.name
+      }));
+      
+      const res = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8001'}/scenario`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       }).then(r => r.json());
       
-      setResults(res.results || []);
+      // Combine names from scenarios with predicted_price from results
+      setResults(res.map((r, i) => ({
+        name: scenarios[i].name,
+        predicted_price: r.predicted_price
+      })));
     } catch (e) {
       console.error(e);
       // Mock results if API fails

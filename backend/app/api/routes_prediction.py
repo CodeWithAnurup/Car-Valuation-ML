@@ -79,7 +79,24 @@ def get_model_comparison():
     metadata = model_loader.metadata
     if not metadata:
         raise HTTPException(status_code=503, detail="Metadata unavailable")
-    return metadata.get("cross_validation", {})
+    
+    cv_results = metadata.get("cv_results", {})
+    test_results = metadata.get("test_results", {})
+    
+    models = []
+    for name in cv_results.keys():
+        cv = cv_results.get(name, {})
+        test = test_results.get(name, {})
+        models.append({
+            "name": name,
+            "r2": test.get("r2", 0),
+            "mae": np.expm1(test.get("mae", 0)), # approximate real value mapping since they are log
+            "rmse": np.expm1(test.get("rmse", 0)),
+            "cv_mae_mean": np.expm1(cv.get("mae_mean", 0)),
+            "cv_mae_std": np.expm1(cv.get("mae_std", 0))
+        })
+        
+    return {"models": models}
 
 @router.get("/data-quality")
 def get_data_quality():
