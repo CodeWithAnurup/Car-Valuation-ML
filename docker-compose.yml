@@ -8,14 +8,14 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - CORS_ORIGINS=http://localhost:5173
+      - CORS_ORIGINS='["http://localhost:5173"]'
     volumes:
       - ./backend:/app/backend
       - ./models:/app/models
     command: uvicorn backend.app.main:app --host 0.0.0.0 --port 8000 --reload
 
   frontend:
-    image: node:20-alpine
+    image: node:22-alpine
     working_dir: /app/frontend
     volumes:
       - ./frontend:/app/frontend
