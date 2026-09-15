@@ -143,12 +143,13 @@ jupyter notebook Notebook.ipynb
 
 ---
 
-## ?? Full-Stack Application Upgrade
+## 🚀 Full-Stack Application Upgrade
 
 This repository has been upgraded from a Jupyter Notebook experiment into a **production-ready full-stack application**.
 
 ### Backend (FastAPI)
-- **API Endpoints:** /predict, /scenario, /model-info, /model-comparison, /data-quality`n- **ML Pipeline:** The complete scikit-learn ColumnTransformer + Pipeline is pickled, allowing the API to accept raw JSON inputs without manual feature engineering.
+- **API Endpoints:** /predict, /scenario, /model-info, /model-comparison, /data-quality
+- **ML Pipeline:** The complete scikit-learn ColumnTransformer + Pipeline is pickled, allowing the API to accept raw JSON inputs without manual feature engineering.
 - **Validation:** Pydantic models validate all incoming requests.
 
 ### Frontend (React + Vite)
@@ -160,7 +161,7 @@ This repository has been upgraded from a Jupyter Notebook experiment into a **pr
 ### Deployment & DevOps
 - **Docker:** Dockerfile and docker-compose.yml for instant local deployment.
 - **CI/CD:** GitHub Actions workflow for automated testing and builds.
-- **Render:** Included ender.yaml for one-click cloud deployment.
+- **Render:** Included render.yaml for one-click cloud deployment.
 
 ### How to Run Locally (Full-Stack)
 
@@ -174,4 +175,4 @@ This repository has been upgraded from a Jupyter Notebook experiment into a **pr
    cd frontend
    npm install
    npm run dev
-
+   ```
