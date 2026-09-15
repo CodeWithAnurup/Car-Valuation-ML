@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: car-price-api
+    env: python
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHONPATH
+        value: backend
+      - key: MODEL_PATH
+        value: models/car_price_model_v1.joblib
+      - key: METADATA_PATH
+        value: models/metadata.json
+      - key: CORS_ORIGINS
+        value: https://car-price-frontend.onrender.com
+
+  - type: web
+    name: car-price-frontend
+    env: static
+    buildCommand: cd frontend && npm install && npm run build
+    staticPublishPath: frontend/dist
+    envVars:
+      - key: VITE_API_URL
+        value: https://car-price-api.onrender.com

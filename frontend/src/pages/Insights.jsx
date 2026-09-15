@@ -51,8 +51,8 @@ export default function Insights() {
                 <tr key={idx} className="border-b border-slate-700/50 hover:bg-slate-800/50 transition-colors">
                   <td className="py-3 px-4 font-medium text-emerald-400">{model.name}</td>
                   <td className="py-3 px-4">{(model.r2 * 100).toFixed(2)}%</td>
-                  <td className="py-3 px-4">₹{model.mae.toLocaleString('en-IN', { maximumFractionDigits: 0 })}</td>
-                  <td className="py-3 px-4">₹{model.rmse.toLocaleString('en-IN', { maximumFractionDigits: 0 })}</td>
+                  <td className="py-3 px-4">{model.mae.toFixed(4)}</td>
+                  <td className="py-3 px-4">{model.rmse.toFixed(4)}</td>
                 </tr>
               ))}
             </tbody>
@@ -75,8 +75,8 @@ export default function Insights() {
               {data?.models?.map((model, idx) => (
                 <tr key={idx} className="border-b border-slate-700/50 hover:bg-slate-800/50 transition-colors">
                   <td className="py-3 px-4 font-medium">{model.name}</td>
-                  <td className="py-3 px-4">₹{model.cv_mae_mean?.toLocaleString('en-IN', { maximumFractionDigits: 0 }) || 'N/A'}</td>
-                  <td className="py-3 px-4 text-slate-400">± ₹{model.cv_mae_std?.toLocaleString('en-IN', { maximumFractionDigits: 0 }) || 'N/A'}</td>
+                  <td className="py-3 px-4">{model.cv_mae_mean?.toFixed(4) || 'N/A'}</td>
+                  <td className="py-3 px-4 text-slate-400">± {model.cv_mae_std?.toFixed(4) || 'N/A'}</td>
                 </tr>
               ))}
             </tbody>

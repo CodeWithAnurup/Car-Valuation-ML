@@ -90,10 +90,10 @@ def get_model_comparison():
         models.append({
             "name": name,
             "r2": test.get("r2", 0),
-            "mae": np.expm1(test.get("mae", 0)), # approximate real value mapping since they are log
-            "rmse": np.expm1(test.get("rmse", 0)),
-            "cv_mae_mean": np.expm1(cv.get("mae_mean", 0)),
-            "cv_mae_std": np.expm1(cv.get("mae_std", 0))
+            "mae": test.get("mae", 0),
+            "rmse": test.get("rmse", 0),
+            "cv_mae_mean": cv.get("mae_mean", 0),
+            "cv_mae_std": cv.get("mae_std", 0)
         })
         
     return {"models": models}
