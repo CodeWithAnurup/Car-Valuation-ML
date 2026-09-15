@@ -1,0 +1,14 @@
+Step 1: Open Terminal 1 — Start Backend
+powershell
+cd "C:\Users\anuru\Desktop\Price prediction models\Car_Price"
+$env:PYTHONPATH = "backend"
+python -m uvicorn backend.app.main:app --port 8001 --reload
+
+Step 2: Open Terminal 2 — Start Frontend
+powershell
+cd "C:\Users\anuru\Desktop\Price prediction models\Car_Price\frontend"
+npm run dev
+
+
+Open To the LocalHost
+http://localhost:5173
