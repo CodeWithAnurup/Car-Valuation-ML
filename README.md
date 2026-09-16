@@ -59,21 +59,21 @@ Three regression models were evaluated:
 
 | Model | MAE | MSE | RMSE | R² |
 |---|---|---|---|---|
-| Linear Regression | 0.3276 | 0.2111 | 0.4594 | 0.6891 |
-| Random Forest | **0.2848** | 0.1536 | 0.3919 | 0.7738 |
-| **XGBoost** | 0.2877 | **0.1382** | **0.3715** | **0.7772** |
+| Linear Regression | 0.2987 | 0.1456 | 0.3815 | 0.7606 |
+| **Random Forest** | **0.2840** | **0.1333** | **0.3652** | **0.7807** |
+| XGBoost | 0.2875 | 0.1388 | 0.3725 | 0.7717 |
 
 ### Model Performance Comparison
 ![Model Comparison](images/Model%20performance%20Comparision.png)
 
 ---
 
-## 🏆 Best Model: XGBoost
+## 🏆 Selected Model: XGBoost
 
-- **Highest R² Score:** 0.7772 — explains **77.72% of variance** in selling price
-- **Lowest RMSE:** 0.3715
-- **Lowest MSE:** 0.1382
-- Selected as the final model based on superior overall predictive performance
+- **R² Score:** 0.7717 — explains **77.17% of variance** in selling price
+- **RMSE:** 0.3725
+- **MSE:** 0.1388
+- Selected as the final model based on its robust performance and fast inference speed
 
 ### Top Feature Importances (XGBoost)
 1. **Vehicle Age (15.7%)** — The single most dominant factor. Depreciation hits hardest.
